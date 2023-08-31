@@ -127,9 +127,7 @@ module SW_SHA256_AHBL (
 	wire[31:0]	DIGEST5_REG	= digest[191:160];
 	wire[31:0]	DIGEST6_REG	= digest[223:192];
 	wire[31:0]	DIGEST7_REG	= digest[255:224];
-	wire		digest_valid;
 	wire		_VALID_FLAG_	= digest_valid;
-	wire		ready;
 	wire		_READY_FLAG_	= ready;
 	wire[1:0]	MIS_REG	= RIS_REG & IM_REG;
 	wire		ahbl_valid	= last_HSEL & last_HTRANS[1];

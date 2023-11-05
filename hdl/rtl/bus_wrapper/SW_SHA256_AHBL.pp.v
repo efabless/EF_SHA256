@@ -30,9 +30,9 @@
 `timescale			1ns/1ns
 `default_nettype	none
 
-`define		AHB_BLOCK(name, init)		always @(posedge HCLK or negedge HRESETn) if(~HRESETn) name <= init;
-`define		AHB_REG(name, init, size)	`AHB_BLOCK(name, init) else if(ahbl_we & (last_HADDR[15:0]==``name``_ADDR)) name <= HWDATA[``size``-1:0];
-`define		AHB_ICR(size)				`AHB_BLOCK(ICR_REG, size'b0) else if(ahbl_we & (last_HADDR[15:0]==ICR_REG_ADDR)) ICR_REG <= HWDATA[``size``-1:0]; else ICR_REG <= ``size``'d0;
+
+
+
 
 module SW_SHA256_ahbl (
 	input	wire 		HCLK,
@@ -171,26 +171,26 @@ module SW_SHA256_ahbl (
 		.digest_valid(digest_valid)
 	);
 
-	`AHB_REG(CTRL_REG, 0, 8)
-	`AHB_REG(BLOCK0_REG, 0, 32)
-	`AHB_REG(BLOCK1_REG, 0, 32)
-	`AHB_REG(BLOCK2_REG, 0, 32)
-	`AHB_REG(BLOCK3_REG, 0, 32)
-	`AHB_REG(BLOCK4_REG, 0, 32)
-	`AHB_REG(BLOCK5_REG, 0, 32)
-	`AHB_REG(BLOCK6_REG, 0, 32)
-	`AHB_REG(BLOCK7_REG, 0, 32)
-	`AHB_REG(BLOCK8_REG, 0, 32)
-	`AHB_REG(BLOCK9_REG, 0, 32)
-	`AHB_REG(BLOCK10_REG, 0, 32)
-	`AHB_REG(BLOCK11_REG, 0, 32)
-	`AHB_REG(BLOCK12_REG, 0, 32)
-	`AHB_REG(BLOCK13_REG, 0, 32)
-	`AHB_REG(BLOCK14_REG, 0, 32)
-	`AHB_REG(BLOCK15_REG, 0, 32)
-	`AHB_REG(IM_REG, 0, 2)
+	always @(posedge HCLK or negedge HRESETn) if(~HRESETn) CTRL_REG <= 0; else if(ahbl_we & (last_HADDR[15:0]==CTRL_REG_ADDR)) CTRL_REG <= HWDATA[8-1:0];
+	always @(posedge HCLK or negedge HRESETn) if(~HRESETn) BLOCK0_REG <= 0; else if(ahbl_we & (last_HADDR[15:0]==BLOCK0_REG_ADDR)) BLOCK0_REG <= HWDATA[32-1:0];
+	always @(posedge HCLK or negedge HRESETn) if(~HRESETn) BLOCK1_REG <= 0; else if(ahbl_we & (last_HADDR[15:0]==BLOCK1_REG_ADDR)) BLOCK1_REG <= HWDATA[32-1:0];
+	always @(posedge HCLK or negedge HRESETn) if(~HRESETn) BLOCK2_REG <= 0; else if(ahbl_we & (last_HADDR[15:0]==BLOCK2_REG_ADDR)) BLOCK2_REG <= HWDATA[32-1:0];
+	always @(posedge HCLK or negedge HRESETn) if(~HRESETn) BLOCK3_REG <= 0; else if(ahbl_we & (last_HADDR[15:0]==BLOCK3_REG_ADDR)) BLOCK3_REG <= HWDATA[32-1:0];
+	always @(posedge HCLK or negedge HRESETn) if(~HRESETn) BLOCK4_REG <= 0; else if(ahbl_we & (last_HADDR[15:0]==BLOCK4_REG_ADDR)) BLOCK4_REG <= HWDATA[32-1:0];
+	always @(posedge HCLK or negedge HRESETn) if(~HRESETn) BLOCK5_REG <= 0; else if(ahbl_we & (last_HADDR[15:0]==BLOCK5_REG_ADDR)) BLOCK5_REG <= HWDATA[32-1:0];
+	always @(posedge HCLK or negedge HRESETn) if(~HRESETn) BLOCK6_REG <= 0; else if(ahbl_we & (last_HADDR[15:0]==BLOCK6_REG_ADDR)) BLOCK6_REG <= HWDATA[32-1:0];
+	always @(posedge HCLK or negedge HRESETn) if(~HRESETn) BLOCK7_REG <= 0; else if(ahbl_we & (last_HADDR[15:0]==BLOCK7_REG_ADDR)) BLOCK7_REG <= HWDATA[32-1:0];
+	always @(posedge HCLK or negedge HRESETn) if(~HRESETn) BLOCK8_REG <= 0; else if(ahbl_we & (last_HADDR[15:0]==BLOCK8_REG_ADDR)) BLOCK8_REG <= HWDATA[32-1:0];
+	always @(posedge HCLK or negedge HRESETn) if(~HRESETn) BLOCK9_REG <= 0; else if(ahbl_we & (last_HADDR[15:0]==BLOCK9_REG_ADDR)) BLOCK9_REG <= HWDATA[32-1:0];
+	always @(posedge HCLK or negedge HRESETn) if(~HRESETn) BLOCK10_REG <= 0; else if(ahbl_we & (last_HADDR[15:0]==BLOCK10_REG_ADDR)) BLOCK10_REG <= HWDATA[32-1:0];
+	always @(posedge HCLK or negedge HRESETn) if(~HRESETn) BLOCK11_REG <= 0; else if(ahbl_we & (last_HADDR[15:0]==BLOCK11_REG_ADDR)) BLOCK11_REG <= HWDATA[32-1:0];
+	always @(posedge HCLK or negedge HRESETn) if(~HRESETn) BLOCK12_REG <= 0; else if(ahbl_we & (last_HADDR[15:0]==BLOCK12_REG_ADDR)) BLOCK12_REG <= HWDATA[32-1:0];
+	always @(posedge HCLK or negedge HRESETn) if(~HRESETn) BLOCK13_REG <= 0; else if(ahbl_we & (last_HADDR[15:0]==BLOCK13_REG_ADDR)) BLOCK13_REG <= HWDATA[32-1:0];
+	always @(posedge HCLK or negedge HRESETn) if(~HRESETn) BLOCK14_REG <= 0; else if(ahbl_we & (last_HADDR[15:0]==BLOCK14_REG_ADDR)) BLOCK14_REG <= HWDATA[32-1:0];
+	always @(posedge HCLK or negedge HRESETn) if(~HRESETn) BLOCK15_REG <= 0; else if(ahbl_we & (last_HADDR[15:0]==BLOCK15_REG_ADDR)) BLOCK15_REG <= HWDATA[32-1:0];
+	always @(posedge HCLK or negedge HRESETn) if(~HRESETn) IM_REG <= 0; else if(ahbl_we & (last_HADDR[15:0]==IM_REG_ADDR)) IM_REG <= HWDATA[2-1:0];
 
-	`AHB_ICR(2)
+	always @(posedge HCLK or negedge HRESETn) if(~HRESETn) ICR_REG <= 2'b0; else if(ahbl_we & (last_HADDR[15:0]==ICR_REG_ADDR)) ICR_REG <= HWDATA[2-1:0]; else ICR_REG <= 2'd0;
 
 	always @(posedge HCLK or negedge HRESETn)
 		if(~HRESETn) RIS_REG <= 32'd0;

@@ -1,0 +1,440 @@
+{
+    "info": {
+        "name": "sha256_core",
+        "description": "Hardware implementation of the SHA-256 cryptographic hash function.",
+        "repo": "github.com/efabless/SW_SHA256",
+        "owner": "secworks",
+        "license": "MIT",
+        "author": "Joachim Strombergson",
+        "email": "",
+        "version": "v1.0.0",
+        "date": "20-6-2023",
+        "category": "digital",
+        "tags": [
+            "accelerator",
+            "SHA256",
+            "security"
+        ],
+        "bus": [
+            "generic"
+        ],
+        "type": "soft",
+        "status": "verified",
+        "cell_count": "0",
+        "width": "0.0",
+        "height": "0.0",
+        "technology": "n/a",
+        "clock_freq_mhz": "40",
+        "supply_voltage": [
+            "n/a"
+        ]
+    },
+    "regs": [
+        {
+            "name": "STATUS",
+            "size": "8",
+            "mode": "ro",
+            "init": "0",
+            "fields": [
+                {
+                    "name": "ready_reg",
+                    "from": "7",
+                    "size": "1",
+                    "port": "ready"
+                },
+                {
+                    "name": "digest_valid_reg",
+                    "from": "8",
+                    "size": "1",
+                    "port": "digest_valid"
+                }
+            ]
+        },
+        {
+            "name": "CTRL",
+            "size": "8",
+            "mode": "rw",
+            "init": "0",
+            "fields": [
+                {
+                    "name": "init_reg",
+                    "from": "0",
+                    "size": "1",
+                    "port": "init"
+                },
+                {
+                    "name": "next_reg",
+                    "from": "1",
+                    "size": "1",
+                    "port": "next"
+                },
+                {
+                    "name": "mode_reg",
+                    "from": "2",
+                    "size": "1",
+                    "port": "mode"
+                }
+            ]
+        },
+        {
+            "name": "BLOCK0",
+            "size": "32",
+            "mode": "rw",
+            "init": "0",
+            "fields": [
+                {
+                    "name": "BLOCK0",
+                    "from": "0",
+                    "size": "32",
+                    "port": "block[31:0]"
+                }
+            ]
+        },
+        {
+            "name": "BLOCK1",
+            "size": "32",
+            "mode": "rw",
+            "init": "0",
+            "fields": [
+                {
+                    "name": "BLOCK1",
+                    "from": "0",
+                    "size": "32",
+                    "port": "block[63:32]"
+                }
+            ]
+        },
+        {
+            "name": "BLOCK2",
+            "size": "32",
+            "mode": "rw",
+            "init": "0",
+            "fields": [
+                {
+                    "name": "BLOCK2",
+                    "from": "0",
+                    "size": "32",
+                    "port": "block[95:64]"
+                }
+            ]
+        },
+        {
+            "name": "BLOCK3",
+            "size": "32",
+            "mode": "rw",
+            "init": "0",
+            "fields": [
+                {
+                    "name": "BLOCK3",
+                    "from": "0",
+                    "size": "32",
+                    "port": "block[127:96]"
+                }
+            ]
+        },
+        {
+            "name": "BLOCK4",
+            "size": "32",
+            "mode": "rw",
+            "init": "0",
+            "fields": [
+                {
+                    "name": "BLOCK4",
+                    "from": "0",
+                    "size": "32",
+                    "port": "block[159:128]"
+                }
+            ]
+        },
+        {
+            "name": "BLOCK5",
+            "size": "32",
+            "mode": "rw",
+            "init": "0",
+            "fields": [
+                {
+                    "name": "BLOCK5",
+                    "from": "0",
+                    "size": "32",
+                    "port": "block[191:160]"
+                }
+            ]
+        },
+        {
+            "name": "BLOCK6",
+            "size": "32",
+            "mode": "rw",
+            "init": "0",
+            "fields": [
+                {
+                    "name": "BLOCK6",
+                    "from": "0",
+                    "size": "32",
+                    "port": "block[223:192]"
+                }
+            ]
+        },
+        {
+            "name": "BLOCK7",
+            "size": "32",
+            "mode": "rw",
+            "init": "0",
+            "fields": [
+                {
+                    "name": "BLOCK7",
+                    "from": "0",
+                    "size": "32",
+                    "port": "block[255:224]"
+                }
+            ]
+        },
+        {
+            "name": "BLOCK8",
+            "size": "32",
+            "mode": "rw",
+            "init": "0",
+            "fields": [
+                {
+                    "name": "BLOCK8",
+                    "from": "0",
+                    "size": "32",
+                    "port": "block[287:256]"
+                }
+            ]
+        },
+        {
+            "name": "BLOCK9",
+            "size": "32",
+            "mode": "rw",
+            "init": "0",
+            "fields": [
+                {
+                    "name": "BLOCK9",
+                    "from": "0",
+                    "size": "32",
+                    "port": "block[319:288]"
+                }
+            ]
+        },
+        {
+            "name": "BLOCK10",
+            "size": "32",
+            "mode": "rw",
+            "init": "0",
+            "fields": [
+                {
+                    "name": "BLOCK10",
+                    "from": "0",
+                    "size": "32",
+                    "port": "block[351:320]"
+                }
+            ]
+        },
+        {
+            "name": "BLOCK11",
+            "size": "32",
+            "mode": "rw",
+            "init": "0",
+            "fields": [
+                {
+                    "name": "BLOCK11",
+                    "from": "0",
+                    "size": "32",
+                    "port": "block[383:352]"
+                }
+            ]
+        },
+        {
+            "name": "BLOCK12",
+            "size": "32",
+            "mode": "rw",
+            "init": "0",
+            "fields": [
+                {
+                    "name": "BLOCK12",
+                    "from": "0",
+                    "size": "32",
+                    "port": "block[415:384]"
+                }
+            ]
+        },
+        {
+            "name": "BLOCK13",
+            "size": "32",
+            "mode": "rw",
+            "init": "0",
+            "fields": [
+                {
+                    "name": "BLOCK13",
+                    "from": "0",
+                    "size": "32",
+                    "port": "block[447:416]"
+                }
+            ]
+        },
+        {
+            "name": "BLOCK14",
+            "size": "32",
+            "mode": "rw",
+            "init": "0",
+            "fields": [
+                {
+                    "name": "BLOCK14",
+                    "from": "0",
+                    "size": "32",
+                    "port": "block[479:448]"
+                }
+            ]
+        },
+        {
+            "name": "BLOCK15",
+            "size": "32",
+            "mode": "rw",
+            "init": "0",
+            "fields": [
+                {
+                    "name": "BLOCK15",
+                    "from": "0",
+                    "size": "32",
+                    "port": "block[511:480]"
+                }
+            ]
+        },
+        {
+            "name": "DIGEST0",
+            "size": "32",
+            "mode": "ro",
+            "init": "0",
+            "fields": [
+                {
+                    "name": "DIGEST0",
+                    "from": "0",
+                    "size": "32",
+                    "port": "digest[31:0]"
+                }
+            ]
+        },
+        {
+            "name": "DIGEST1",
+            "size": "32",
+            "mode": "ro",
+            "init": "0",
+            "fields": [
+                {
+                    "name": "DIGEST1",
+                    "from": "0",
+                    "size": "32",
+                    "port": "digest[63:32]"
+                }
+            ]
+        },
+        {
+            "name": "DIGEST2",
+            "size": "32",
+            "mode": "ro",
+            "init": "0",
+            "fields": [
+                {
+                    "name": "DIGEST2",
+                    "from": "0",
+                    "size": "32",
+                    "port": "digest[95:64]"
+                }
+            ]
+        },
+        {
+            "name": "DIGEST3",
+            "size": "32",
+            "mode": "ro",
+            "init": "0",
+            "fields": [
+                {
+                    "name": "DIGEST3",
+                    "from": "0",
+                    "size": "32",
+                    "port": "digest[127:96]"
+                }
+            ]
+        },
+        {
+            "name": "DIGEST4",
+            "size": "32",
+            "mode": "ro",
+            "init": "0",
+            "fields": [
+                {
+                    "name": "DIGEST0",
+                    "from": "0",
+                    "size": "32",
+                    "port": "digest[159:128]"
+                }
+            ]
+        },
+        {
+            "name": "DIGEST5",
+            "size": "32",
+            "mode": "ro",
+            "init": "0",
+            "fields": [
+                {
+                    "name": "DIGEST5",
+                    "from": "0",
+                    "size": "32",
+                    "port": "digest[191:160]"
+                }
+            ]
+        },
+        {
+            "name": "DIGEST6",
+            "size": "32",
+            "mode": "ro",
+            "init": "0",
+            "fields": [
+                {
+                    "name": "DIGEST6",
+                    "from": "0",
+                    "size": "32",
+                    "port": "digest[223:192]"
+                }
+            ]
+        },
+        {
+            "name": "DIGEST7",
+            "size": "32",
+            "mode": "ro",
+            "init": "0",
+            "fields": [
+                {
+                    "name": "DIGEST7",
+                    "from": "0",
+                    "size": "32",
+                    "port": "digest[255:224]"
+                }
+            ]
+        }
+    ],
+    "clock": "clk",
+    "reset": {
+        "name": "reset_n",
+        "pol": "0"
+    },
+    "flags": [
+        {
+            "name": "valid",
+            "port": "digest_valid"
+        }, 
+        {
+            "name": "ready",
+            "port": "ready"
+        } 
+    ],
+    "ports":[
+      {"name": "init", "size": "1"},
+      {"name": "next", "size": "1"},
+      {"name": "mode", "size": "1"},
+      {"name": "block", "size": "512"},
+      {"name": "ready", "size": "1"},
+      {"name": "digest", "size": "256"},
+      {"name": "digest_valid", "size": "1"}
+    ]
+}

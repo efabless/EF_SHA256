@@ -34,7 +34,7 @@
 
 
 
-module SW_SHA256_ahbl (
+module SW_SHA256_AHBL (
 	input	wire 		HCLK,
 	input	wire 		HRESETn,
 	input	wire [31:0]	HADDR,

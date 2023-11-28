@@ -1,5 +1,5 @@
-#ifndef SW_SHA256
-#define SW_SHA256
+#ifndef SW_SHA256_H
+#define SW_SHA256_H
 
 #include <stdint.h>
 #include <stdbool.h>

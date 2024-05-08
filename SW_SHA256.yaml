@@ -1,0 +1,319 @@
+---
+info:
+  name: SW_SHA256
+  description: Hardware implementation of the SHA-256 cryptographic hash function.
+  repo: github.com/efabless/SW_SHA256
+  owner: secworks
+  license: MIT
+  author: Joachim Strombergson
+  email: ''
+  version: v1.0.0
+  date: 20-6-2023
+  category: digital
+  tags:
+  - accelerator
+  - SHA256
+  - security
+  bus:
+  - generic
+  type: soft
+  status: verified
+  cell_count:
+    - IP: TBD
+    - APB: TBD
+    - AHBL: TBD
+    - WB: TBD
+  width: '0.0'
+  height: '0.0'
+  technology: n/a
+  clock_freq_mhz:
+    - IP: TBD
+    - APB: TBD
+    - AHBL: TBD
+    - WB: TBD
+  digital_supply_voltage: n/a
+  analog_supply_voltage: n/a
+  irq_reg_offset: 0xFF00
+  fifo_reg_offset: 0xFE00
+
+ports:
+- name: init
+  width: 1
+  direction: input
+  description: Initial bit
+- name: next
+  width: 1
+  direction: input
+  description: Next bit
+- name: mode
+  width: 1
+  direction: input
+  description: Mode bit; '0' means SHA224 '1' means SHA256
+- name: block
+  width: 512
+  direction: input
+  description: block value 
+- name: ready
+  width: 1
+  direction: output
+  description: ready to start 
+- name: digest
+  width: 256
+  direction: output
+  description: digest value 
+- name: digest_valid
+  width: 1
+  direction: output
+  description: digest is valid 
+
+registers:
+- name: STATUS
+  size: 8
+  mode: r
+  fifo: no
+  offset: 0
+  bit_access: no
+  description: "Status register bit 0: digest is valid , bit 1: ready"
+  fields:
+    - name: ready_reg
+      bit_offset: 6
+      bit_width: 1
+      read_port: ready
+      description: Ready to start
+    - name: digest_valid_reg
+      bit_offset: 7
+      bit_width: 1
+      read_port: digest_valid
+      description: Digest is valid
+
+- name: CTRL
+  size: 8
+  mode: w
+  fifo: no
+  offset: 4
+  bit_access: no
+  description: "Control register bit 0: Initial bit (init) bit 1: Next bit , bit 2: Mode bit"
+  fields:
+    - name: init_reg
+      bit_offset: 0
+      bit_width: 1
+      write_port: init
+      description: Initial bit
+    - name: next_reg
+      bit_offset: 1
+      bit_width: 1
+      write_port: next
+      description: Next bit
+    - name: mode_reg
+      bit_offset: 2
+      bit_width: 1
+      write_port: mode
+      description: Mode bit; “0” means SHA224 “1” means SHA256"
+- name: BLOCK0
+  size: 32
+  mode: w
+  fifo: no
+  offset: 8
+  bit_access: no
+  write_port: block[31:0]
+  description: Contains the bits 31-0 of the input block value
+- name: BLOCK1
+  size: 32
+  mode: w
+  fifo: no
+  offset: 12
+  bit_access: no
+  write_port: block[63:32]
+  description: Contains the bits 63-32 of the input block value
+- name: BLOCK2
+  size: 32
+  mode: w
+  fifo: no
+  offset: 16
+  bit_access: no
+  write_port: block[95:64]
+  description: Contains the bits 95-64 of the input block value
+- name: BLOCK3
+  size: 32
+  mode: w
+  fifo: no
+  offset: 20
+  bit_access: no
+  write_port: block[127:96]
+  description: Contains the bits 127-96 of the input block value
+- name: BLOCK4
+  size: 32
+  mode: w
+  fifo: no
+  offset: 24
+  bit_access: no
+  write_port: block[159:128]
+  description: Contains the bits 159-128 of the input block value
+- name: BLOCK5
+  size: 32
+  mode: w
+  fifo: no
+  offset: 28
+  bit_access: no
+  write_port: block[191:160]
+  description: Contains the bits 191-160 of the input block value
+- name: BLOCK6
+  size: 32
+  mode: w
+  fifo: no
+  offset: 32
+  bit_access: no
+  write_port: block[223:192]
+  description: Contains the bits 223-192 of the input block value
+- name: BLOCK7
+  size: 32
+  mode: w
+  fifo: no
+  offset: 36
+  bit_access: no
+  write_port: block[255:224]
+  description: Contains the bits 255-224 of the input block value
+- name: BLOCK8
+  size: 32
+  mode: w
+  fifo: no
+  offset: 40
+  bit_access: no
+  write_port: block[287:256]
+  description: Contains the bits 287-256 of the input block value
+- name: BLOCK9
+  size: 32
+  mode: w
+  fifo: no
+  offset: 44
+  bit_access: no
+  write_port: block[319:288]
+  description: Contains the bits 319-288 of the input block value
+- name: BLOCK10
+  size: 32
+  mode: w
+  fifo: no
+  offset: 48
+  bit_access: no
+  write_port: block[351:320]
+  description: Contains the bits 351-320 of the input block value
+- name: BLOCK11
+  size: 32
+  mode: w
+  fifo: no
+  offset: 52
+  bit_access: no
+  write_port: block[383:352]
+  description: Contains the bits 383-352 of the input block value
+- name: BLOCK12
+  size: 32
+  mode: w
+  fifo: no
+  offset: 56
+  bit_access: no
+  write_port: block[415:384]
+  description: Contains the bits 415-384 of the input block value
+- name: BLOCK13
+  size: 32
+  mode: w
+  fifo: no
+  offset: 60
+  bit_access: no
+  write_port: block[447:416]
+  description: Contains the bits 447-416 of the input block value
+- name: BLOCK14
+  size: 32
+  mode: w
+  fifo: no
+  offset: 64
+  bit_access: no
+  write_port: block[479:448]
+  description: Contains the bits 479-448 of the input block value
+- name: BLOCK15
+  size: 32
+  mode: w
+  fifo: no
+  offset: 68
+  bit_access: no
+  write_port: block[511:480]
+  description: Contains the bits 512-480 of the input block value
+
+- name: DIGEST0
+  size: 32
+  mode: w
+  fifo: no
+  offset: 72
+  bit_access: no
+  write_port: digest[31:0]
+  description: Contains the bits 31-0 of the input digest value
+- name: DIGEST1
+  size: 32
+  mode: w
+  fifo: no
+  offset: 76
+  bit_access: no
+  write_port: digest[63:32]
+  description: Contains the bits 63-32 of the input digest value
+- name: DIGEST2
+  size: 32
+  mode: w
+  fifo: no
+  offset: 80
+  bit_access: no
+  write_port: digest[95:64]
+  description: Contains the bits 95-64 of the input digest value
+- name: DIGEST3
+  size: 32
+  mode: w
+  fifo: no
+  offset: 84
+  bit_access: no
+  write_port: digest[127:96]
+  description: Contains the bits 127-96 of the input digest value
+- name: DIGEST4
+  size: 32
+  mode: w
+  fifo: no
+  offset: 88
+  bit_access: no
+  write_port: digest[159:128]
+  description: Contains the bits 159-128 of the input digest value
+- name: DIGEST5
+  size: 32
+  mode: w
+  fifo: no
+  offset: 92
+  bit_access: no
+  write_port: digest[191:160]
+  description: Contains the bits 191-160 of the input digest value
+- name: DIGEST6
+  size: 32
+  mode: w
+  fifo: no
+  offset: 96
+  bit_access: no
+  write_port: digest[223:192]
+  description: Contains the bits 223-192 of the input digest value
+- name: DIGEST7
+  size: 32
+  mode: w
+  fifo: no
+  offset: 100
+  bit_access: no
+  write_port: digest[255:224]
+  description: Contains the bits 255-224 of the input digest value
+
+clock:
+  name: clk
+reset:
+  name: reset_n
+  level: 0
+  
+flags:
+- name: valid
+  port: digest_valid
+  description: Digest is valid 
+- name: ready
+  port: ready
+  description: Ready to start
+

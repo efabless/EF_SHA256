@@ -156,11 +156,32 @@ module SW_SHA256_AHBL (
 	wire		ahbl_valid	= last_HSEL & last_HTRANS[1];
 	wire		ahbl_we	= last_HWRITE & ahbl_valid;
 	wire		ahbl_re	= ~last_HWRITE & ahbl_valid;
-	wire		_clk_	= HCLK;
+	//wire		_clk_	= HCLK;
 	wire		_rst_	= ~HRESETn;
 
+	localparam[15:0] CLKG_REG_ADDR = 16'hF000;
+	wire			 gclk;
+	generate
+        if(CLKG == 1) begin
+            reg         CLKG_REG;
+
+            `AHB_REG(CTRL_REG, 0, 1)
+
+            (* keep *) sky130_fd_sc_hd__dlclkp_4 GCLK(
+            `ifdef USE_POWER_PINS 
+                .VPWR(VPWR), 
+                .VGND(VGND), 
+            `endif 
+                .GCLK(SRAMCLK), 
+                .GATE(CLKG_REG), 
+                .CLK(HCLK)
+            );
+        end else
+            assign gclk   = HCLK;
+    endgenerate
+
 	sha256_core inst_to_wrap (
-		.clk(_clk_),
+		.clk(gclk),
 		.reset_n(~_rst_),
 		.init(init),
 		.next(next),

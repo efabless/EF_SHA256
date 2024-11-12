@@ -163,19 +163,14 @@ module SW_SHA256_AHBL #(parameter CLKG=1) (
 	wire			 gclk;
 	generate
         if(CLKG == 1) begin
-            reg         CLKG_REG;
+			reg         CLKG_REG;
+            `AHB_REG(CLKG_REG, 0, 1)
 
-            `AHB_REG(CTRL_REG, 0, 1)
-
-            (* keep *) sky130_fd_sc_hd__dlclkp_4 GCLK(
-            `ifdef USE_POWER_PINS 
-                .VPWR(VPWR), 
-                .VGND(VGND), 
-            `endif 
-                .GCLK(SRAMCLK), 
-                .GATE(CLKG_REG), 
-                .CLK(HCLK)
-            );
+			ef_gating_cell clk_gate_cell(
+				   .clk(HCLK),
+				   .clk_en(CLKG_REG),
+				   .clk_o(gclk)
+			   );
         end else
             assign gclk   = HCLK;
     endgenerate

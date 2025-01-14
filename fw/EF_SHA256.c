@@ -131,7 +131,7 @@ void EF_SHA256_setInterruptMask(uint32_t sha256_base, int mask){
     // bit 0: result valid
     // bit 1: ready
     EF_SHA256_TYPE* sha256 = (EF_SHA256_TYPE*)sha256_base;
-    sha256->im = mask;
+    sha256->IM = mask;
 }
 
 

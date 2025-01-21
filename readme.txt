@@ -23,9 +23,6 @@ Directory Structure:
 
     - fw 
         - **EF_SHA256_regs.h**: Header file containing the register definitions for the EF_SHA256 interface.
-        - **EF_SHA256.c**: C source file implementing the low-level driver functions for the EF_SHA256.
-        - **EF_SHA256.h**: Header file declaring the API functions and data structures for the EF_SHA256 driver.
-        - **DEVICE_DRIVER.pdf**: Documentation for users to understand how to use the EF_SHA256 driver and interface with the IP.
 
     - hdl 
         - rtl 

@@ -257,8 +257,8 @@ VERILOG_DEFINES:
 - CLKG_SKY130_HD
 ```
 ## Firmware Drivers:
-Firmware drivers for EF_SHA256 can be found in the [EF_SHA256](https://github.com/efabless/EF_APIs_HUB/tree/main/EF_SHA256) directory in the [EF_APIs_HUB](https://github.com/efabless/EF_APIs_HUB) repo. EF_SHA256 driver documentation  is available [here](https://github.com/efabless/EF_APIs_HUB/tree/main/EF_SHA256/README.md).
-You can also find an example C application using the EF_SHA256 drivers [here](https://github.com/efabless/EF_APIs_HUB/tree/main/EF_SHA256/EF_SHA256_example.c).
+Firmware drivers for EF_SHA256 can be found in the [Drivers](https://github.com/efabless/EFIS/tree/main/Drivers) directory in the [EFIS](https://github.com/efabless/EFIS) (Efabless Firmware Interface Standard) repo. EF_SHA256 driver documentation  is available [here](https://github.com/efabless/EFIS/blob/main/Drivers/docs/EF_Driver_SHA256/README.md).
+You can also find an example C application using the EF_SHA256 drivers [here](https://github.com/efabless/EFIS/tree/main/Drivers/docs/EF_Driver_SHA256/example).
 ## Installation:
 You can install the IP either by cloning this repository or by using [IPM](https://github.com/efabless/IPM).
 ### 1. Using [IPM](https://github.com/efabless/IPM):

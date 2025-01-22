@@ -26,7 +26,9 @@ Directory Structure:
 
     - hdl 
         - rtl 
-            - **EF_SHA256.v**: Verilog source code for the EF_SHA256 design, including the core logic of the UART module.
+            - **sha256_core.v**: Verilog source code for the EF_SHA256 design
+            - **sha256_k_constants.v**: Verilog source code for the EF_SHA256 design
+            - **sha256_w_mem.v**: Verilog source code for the EF_SHA256 design
             - **bus_wrappers**
                 - **EF_SHA256_AHBL.v**: Verilog wrapper to interface the EF_SHA256 with the AMBA High-performance Bus (AHB-Lite) protocol.
                 - **EF_SHA256_APB.v**: Verilog wrapper to interface the EF_SHA256 with the Advanced Peripheral Bus (APB) protocol.

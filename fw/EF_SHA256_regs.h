@@ -49,7 +49,7 @@
 #define EF_SHA256_CTRL_REG_NEXT_REG_MASK	((uint32_t)0x2)
 #define EF_SHA256_CTRL_REG_MODE_REG_BIT	((uint32_t)2)
 #define EF_SHA256_CTRL_REG_MODE_REG_MASK	((uint32_t)0x4)
-#define EF_SHA256_CTRL_REG_MAX_VALUE	((uint32_t)0xFF)
+#define EF_SHA256_CTRL_REG_MAX_VALUE	((uint32_t)0x7)
 
 #define EF_SHA256_BLOCK0_REG_BLOCK0_BIT	((uint32_t)0)
 #define EF_SHA256_BLOCK0_REG_BLOCK0_MASK	((uint32_t)0xffffffff)

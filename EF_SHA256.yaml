@@ -87,7 +87,7 @@ registers:
       description: Digest is valid
 
 - name: CTRL
-  size: 8
+  size: 3
   mode: w
   fifo: no
   offset: 4
